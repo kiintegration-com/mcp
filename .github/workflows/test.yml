@@ -1,0 +1,32 @@
+name: Prüfung
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bruecke:
+    name: stdio-Brücke
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # 18 ist die kleinste Fassung aus package.json (engines).
+        node: [18, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test
+      - name: server.json und package.json passen zusammen
+        run: |
+          node -e '
+            const s = require("./server.json"), p = require("./package.json");
+            if (s.version !== p.version || s.packages[0].version !== p.version) throw new Error("Version weicht ab");
+            if (s.name !== p.mcpName) throw new Error("mcpName weicht ab");
+          '

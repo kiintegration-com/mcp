@@ -1,0 +1,45 @@
+{
+  "name": "kiintegration-mcp",
+  "version": "1.0.0",
+  "description": "MCP server for the KI Integration Register: find AI service providers and AI funding programmes in Germany, Austria and Switzerland. Hosted at https://kiintegration.com/api/mcp; this package is a dependency-free stdio bridge.",
+  "mcpName": "com.kiintegration/register",
+  "type": "module",
+  "bin": {
+    "kiintegration-mcp": "server.mjs"
+  },
+  "files": [
+    "server.mjs",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "ai-agency",
+    "ki-agentur",
+    "dach",
+    "germany",
+    "austria",
+    "switzerland",
+    "directory",
+    "funding"
+  ],
+  "homepage": "https://kiintegration.com/mcp/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiintegration-com/mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kiintegration-com/mcp/issues"
+  },
+  "author": "Christopher Nonne <info@kiintegration.com> (https://kiintegration.com)",
+  "license": "MIT"
+}

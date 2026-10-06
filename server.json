@@ -1,0 +1,38 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.kiintegration/register",
+  "title": "KI Integration Register",
+  "description": "Find AI service providers and AI funding programmes in Germany, Austria and Switzerland.",
+  "websiteUrl": "https://kiintegration.com/mcp/",
+  "repository": {
+    "url": "https://github.com/kiintegration-com/mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://kiintegration.com/api/mcp"
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "kiintegration-mcp",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "KIR_MCP_URL",
+          "description": "MCP endpoint the bridge forwards to. Default https://kiintegration.com/api/mcp",
+          "isRequired": false,
+          "isSecret": false,
+          "default": "https://kiintegration.com/api/mcp"
+        }
+      ]
+    }
+  ]
+}
