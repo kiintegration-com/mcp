@@ -17,6 +17,7 @@
   <a href="#werkzeuge"><img src="https://img.shields.io/badge/Werkzeuge-4-2e9ae6?style=flat-square" alt="4 Werkzeuge"></a>
   <img src="https://img.shields.io/badge/Anmeldung-keine-1f2328?style=flat-square" alt="Ohne Anmeldung">
   <img src="https://img.shields.io/badge/DACH-DE%20%C2%B7%20AT%20%C2%B7%20CH-1f2328?style=flat-square" alt="Für Deutschland, Österreich und die Schweiz">
+  <a href="https://glama.ai/mcp/servers/kiintegration-com/mcp"><img src="https://glama.ai/mcp/servers/kiintegration-com/mcp/badges/score.svg" alt="Glama-Bewertung"></a>
   <a href="https://github.com/kiintegration-com/mcp/actions/workflows/test.yml"><img src="https://github.com/kiintegration-com/mcp/actions/workflows/test.yml/badge.svg" alt="Prüfung"></a>
 </p>
 
@@ -36,6 +37,7 @@ https://kiintegration.com/api/mcp
 - [Grenzen und Datenschutz](#grenzen-und-datenschutz)
 - [Lokal über stdio](#lokal-über-stdio)
 - [Über kiintegration.com](#über-kiintegrationcom)
+- [In Verzeichnissen](#in-verzeichnissen)
 - [Lizenz](#lizenz)
 
 ## Einrichten
@@ -129,8 +131,8 @@ Der Assistent ruft `leistungsfelder_auflisten`, dann `dienstleister_suchen` mit 
 - **Nur öffentliche Angaben.** Der Server liefert, was auch auf den Profilseiten steht. Telefonnummern, Mailadressen, Registernummern, Steuernummern und Namen vertretungsberechtigter Personen der Betriebe liefert er nicht.
 - **Ungeprüft, außer markiert.** Einträge stammen aus öffentlichen Quellen, vor allem dem Impressum. Verifiziert heißt: Der Betrieb hat seinen Eintrag beansprucht und bestätigt.
 - **Keine Rangliste nach Qualität.** Die Reihenfolge ist die der Registerlisten: verifizierte zuerst, die übrigen jeden Tag neu gemischt. Bezahlung verschiebt sie nicht.
-- **Einzelabruf.** Höchstens 25 Treffer je Suche, kein Blättern. Je Absenderadresse 60 Nachrichten in der Minute und 120 Werkzeugaufrufe in der Stunde, darüber HTTP 429 mit `Retry-After`. Systematisches Auslesen des Bestands untersagen die [Nutzungsbedingungen](https://kiintegration.com/nutzungsbedingungen/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
-- **Was der Server speichert.** Keine Inhalte Ihrer Anfragen. Zur Grenze zählt er je Adresse im Arbeitsspeicher, längstens eine Stunde; Profilabrufe zählt der Abrufwächter des Registers wie Abrufe der Profilseite. Einzelheiten in der [Datenschutzerklärung](https://kiintegration.com/datenschutz/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
+- **Einzelabruf.** Höchstens 25 Treffer je Suche, kein Blättern. Je Absenderadresse 60 Nachrichten in der Minute und 120 Werkzeugaufrufe in der Stunde. Über Claude.ai Connectors oder Smithery 300 Nachrichten und 600 Werkzeugaufrufe, für alle Nutzer des Zugangs zusammen; für den ganzen Server höchstens 1.000 Werkzeugaufrufe in der Stunde. Zu viele Nachrichten: HTTP 429 mit `Retry-After`; zu viele Werkzeugaufrufe: ein Werkzeugergebnis mit `isError`, das sagt, wann es weitergeht. Systematisches Auslesen des Bestands untersagen die [Nutzungsbedingungen](https://kiintegration.com/nutzungsbedingungen/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
+- **Was der Server speichert.** Keine Inhalte Ihrer Anfragen. Zur Grenze zählt er je Adresse oder Gateway im Arbeitsspeicher, längstens eine Stunde; Profilabrufe zählt der Abrufwächter des Registers wie Abrufe der Profilseite. Einzelheiten in der [Datenschutzerklärung](https://kiintegration.com/datenschutz/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
 - **Keine Anfrage über das Werkzeug.** Eine Anfrage an einen Betrieb stellt der Mensch selbst über die Profilseite, kostenlos.
 
 ## Lokal über stdio
@@ -177,6 +179,10 @@ node --test
 Ohne MCP liest ein Agent das Register auch direkt: jede Seite als Markdown unter derselben Adresse mit `.md` oder mit `Accept: text/markdown`, Einstieg über [`/llms.txt`](https://kiintegration.com/llms.txt). Beschreibung aller Wege: [kiintegration.com/mcp](https://kiintegration.com/mcp/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
 
 Fertige Skills für Betriebe (Angebote, Rechnungen, Fristen, DSGVO): [kiintegration-com/skills](https://github.com/kiintegration-com/skills).
+
+## In Verzeichnissen
+
+Name für das offizielle MCP-Verzeichnis: `com.kiintegration/register` (Namensraum über DNS von kiintegration.com belegt, Beschreibung in [`server.json`](server.json)). Eintrag bei Glama: [glama.ai/mcp/servers/kiintegration-com/mcp](https://glama.ai/mcp/servers/kiintegration-com/mcp).
 
 ## Mitmachen
 

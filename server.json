@@ -14,25 +14,5 @@
       "type": "streamable-http",
       "url": "https://kiintegration.com/api/mcp"
     }
-  ],
-  "packages": [
-    {
-      "registryType": "npm",
-      "registryBaseUrl": "https://registry.npmjs.org",
-      "identifier": "kiintegration-mcp",
-      "version": "1.0.0",
-      "transport": {
-        "type": "stdio"
-      },
-      "environmentVariables": [
-        {
-          "name": "KIR_MCP_URL",
-          "description": "MCP endpoint the bridge forwards to. Default https://kiintegration.com/api/mcp",
-          "isRequired": false,
-          "isSecret": false,
-          "default": "https://kiintegration.com/api/mcp"
-        }
-      ]
-    }
   ]
 }

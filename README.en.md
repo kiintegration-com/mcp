@@ -34,12 +34,16 @@ All tools are read-only.
 
 - Only what the public profile pages show. No phone numbers, email addresses, register or tax numbers, or names of representatives.
 - Entries are unverified unless marked as verified (the firm claimed and confirmed its entry).
-- Single lookups: max. 25 results per search, no paging; per sender address 60 messages per minute and 120 tool calls per hour, then HTTP 429 with `Retry-After`. Systematic extraction is prohibited by the [terms of use](https://kiintegration.com/nutzungsbedingungen/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
+- Single lookups: max. 25 results per search, no paging; per sender address 60 messages per minute and 120 tool calls per hour. Through Claude.ai connectors or Smithery 300 messages and 600 tool calls, shared by all users of that gateway; at most 1,000 tool calls per hour for the whole server. Too many messages: HTTP 429 with `Retry-After`; too many tool calls: a tool result with `isError` that says when to retry. Systematic extraction is prohibited by the [terms of use](https://kiintegration.com/nutzungsbedingungen/?utm_source=github&utm_medium=referral&utm_campaign=mcp).
 - The server stores no request content. Rate counters live in memory for at most one hour.
 
 ## Local stdio bridge
 
 `server.mjs` (Node 18+, no dependencies) forwards each JSON-RPC line from stdin to the hosted server and writes the reply to stdout. `KIR_MCP_URL` overrides the target. Tests: `node --test`.
+
+## Directories
+
+Name for the official MCP Registry: `com.kiintegration/register` (namespace verified via DNS for kiintegration.com; metadata in [`server.json`](server.json)). Glama: [glama.ai/mcp/servers/kiintegration-com/mcp](https://glama.ai/mcp/servers/kiintegration-com/mcp).
 
 ## Licence
 
